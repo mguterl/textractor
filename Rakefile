@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "textractor"
-    gem.summary = %Q{simple wrapper for extracting text from PDF and Word documents}
-    gem.description = %Q{simple wrapper for extracting text from PDF and Word documents}
+    gem.summary = %Q{simple wrapper around CLI tools for extracting text from PDF and Word documents}
+    gem.description = %Q{simple wrapper around CLI for extracting text from PDF and Word documents}
     gem.email = "mguterl@gmail.com"
     gem.homepage = "http://github.com/mguterl/textractor"
     gem.authors = ["Michael Guterl"]
