@@ -10,7 +10,7 @@ begin
     gem.email = "mguterl@gmail.com"
     gem.homepage = "http://github.com/mguterl/textractor"
     gem.authors = ["Michael Guterl"]
-    gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_development_dependency "rspec", ">= 1.3.0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
