@@ -1,9 +1,11 @@
 # textractor
 
-textractor is a ruby library that provides a simple wrapper for
-extracting text from PDF and Word documents.
+textractor is a ruby library that provides a simple wrapper around CLI
+tools for extracting text from PDF and Word documents.
 
 ## Setup
+
+    gem install textractor
 
 In order to use textractor you have to install a few command line
 tools.
