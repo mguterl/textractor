@@ -12,12 +12,12 @@ tools.
 
 ### OS X
 
-    port install wv pdftohtml links
+    port install wv xpdf links
 
 I recommend using also passing +no_x11 to the install command, but
 this may not work on all systems due to dependency issues.
 
-    port install wv pdftohtml links +no_x11
+    port install wv xpdf links +no_x11
 
 ### Ubuntu 8.04
 
