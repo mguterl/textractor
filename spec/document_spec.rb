@@ -4,6 +4,7 @@ describe Textractor::Document do
 
   PDF_DOCUMENT_FIXTURE  = File.expand_path(File.dirname(__FILE__) + "/fixtures/document.pdf")
   WORD_DOCUMENT_FIXTURE = File.expand_path(File.dirname(__FILE__) + "/fixtures/document.doc")
+  TXT_DOCUMENT_FIXTURE  = File.expand_path(File.dirname(__FILE__) + "/fixtures/document.txt")
 
   it 'should require a filename to create' do
     expect { Textractor::Document.new }.to raise_error(ArgumentError)
@@ -25,6 +26,15 @@ describe Textractor::Document do
 
       it 'should extract the text from the document' do
         @doc = Textractor::Document.new(WORD_DOCUMENT_FIXTURE)
+        @doc.text.should == "Ruby on rails developer"
+      end
+
+    end
+
+    describe "with txt document" do
+
+      it 'should extract the text from the document' do
+        @doc = Textractor::Document.new(TXT_DOCUMENT_FIXTURE)
         @doc.text.should == "Ruby on rails developer"
       end
 

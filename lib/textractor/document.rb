@@ -7,6 +7,7 @@ module Textractor
       'application/x-pdf' => :pdf,
       'application/doc'   => :word,
       'application/x-doc' => :word,
+      'text/plain'        => :txt
     }
 
     attr_reader :filename
@@ -27,6 +28,8 @@ module Textractor
         :pdf
       when /doc/
         :word
+      when /txt/
+        :txt
       else
         nil
       end
@@ -44,6 +47,10 @@ module Textractor
 
     def extract_from_word
       `wvWare -c utf-8 --nographics -x #{Textractor.wvText_path} #{filename} 2>/dev/null`.strip
+    end
+
+    def extract_from_txt
+      File.read(filename)
     end
 
   end
