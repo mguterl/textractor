@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{textractor}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Guterl"]
-  s.date = %q{2010-04-20}
+  s.date = %q{2010-07-26}
   s.description = %q{simple wrapper around CLI for extracting text from PDF and Word documents}
   s.email = %q{mguterl@gmail.com}
   s.extra_rdoc_files = [
@@ -28,15 +28,17 @@ Gem::Specification.new do |s|
      "spec/document_spec.rb",
      "spec/fixtures/document.doc",
      "spec/fixtures/document.pdf",
+     "spec/fixtures/document.txt",
      "spec/spec.opts",
      "spec/spec_helper.rb",
      "spec/textractor_spec.rb",
-     "support/wvText.xml"
+     "support/wvText.xml",
+     "textractor.gemspec"
   ]
   s.homepage = %q{http://github.com/mguterl/textractor}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{simple wrapper around CLI tools for extracting text from PDF and Word documents}
   s.test_files = [
     "spec/document_spec.rb",
@@ -48,13 +50,13 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_development_dependency(%q<rspec>, [">= 1.3.0"])
     else
-      s.add_dependency(%q<rspec>, [">= 1.2.9"])
+      s.add_dependency(%q<rspec>, [">= 1.3.0"])
     end
   else
-    s.add_dependency(%q<rspec>, [">= 1.2.9"])
+    s.add_dependency(%q<rspec>, [">= 1.3.0"])
   end
 end
 
