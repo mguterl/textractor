@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{textractor}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Guterl"]
-  s.date = %q{2010-07-26}
+  s.date = %q{2010-07-27}
   s.description = %q{simple wrapper around CLI for extracting text from PDF and Word documents}
   s.email = %q{mguterl@gmail.com}
   s.extra_rdoc_files = [
@@ -27,13 +27,29 @@ Gem::Specification.new do |s|
      "lib/textractor/document.rb",
      "spec/document_spec.rb",
      "spec/fixtures/document.doc",
+     "spec/fixtures/document.docx",
      "spec/fixtures/document.pdf",
      "spec/fixtures/document.txt",
      "spec/spec.opts",
      "spec/spec_helper.rb",
      "spec/textractor_spec.rb",
      "support/wvText.xml",
-     "textractor.gemspec"
+     "textractor.gemspec",
+     "vendor/docx2txt/AUTHORS",
+     "vendor/docx2txt/BSDmakefile",
+     "vendor/docx2txt/COPYING",
+     "vendor/docx2txt/ChangeLog",
+     "vendor/docx2txt/INSTALL",
+     "vendor/docx2txt/Makefile",
+     "vendor/docx2txt/README",
+     "vendor/docx2txt/ToDo",
+     "vendor/docx2txt/VERSION",
+     "vendor/docx2txt/WInstall.bat",
+     "vendor/docx2txt/docx2txt.bat",
+     "vendor/docx2txt/docx2txt.config",
+     "vendor/docx2txt/docx2txt.pl",
+     "vendor/docx2txt/docx2txt.sh",
+     "vendor/docx2txt/resume.docx"
   ]
   s.homepage = %q{http://github.com/mguterl/textractor}
   s.rdoc_options = ["--charset=UTF-8"]
