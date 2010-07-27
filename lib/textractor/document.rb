@@ -3,11 +3,13 @@ module Textractor
   class Document
 
     CONTENT_TYPE_CONVERSIONS = {
-      'application/pdf'   => :pdf,
-      'application/x-pdf' => :pdf,
-      'application/doc'   => :doc,
-      'application/x-doc' => :doc,
-      'text/plain'        => :txt
+      'application/pdf'    => :pdf,
+      'application/x-pdf'  => :pdf,
+      'application/doc'    => :doc,
+      'application/x-doc'  => :doc,
+      'application/msword' => :doc,
+      'text/plain'         => :txt,
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => :docx,
     }
 
     attr_reader :filename
@@ -26,6 +28,8 @@ module Textractor
       case File.extname(@filename)
       when /pdf/
         :pdf
+      when /docx/
+        :docx
       when /doc/
         :doc
       when /txt/
@@ -47,6 +51,10 @@ module Textractor
 
     def extract_from_doc
       `wvWare -c utf-8 --nographics -x #{Textractor.wvText_path} #{filename} 2>/dev/null`.strip
+    end
+    
+    def extract_from_docx
+      `#{File.dirname(__FILE__) + "/../../vendor/docx2txt/docx2txt.pl"} #{filename} -`.strip
     end
 
     def extract_from_txt

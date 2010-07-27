@@ -5,6 +5,7 @@ describe Textractor::Document do
   PDF_DOCUMENT_FIXTURE  = File.expand_path(File.dirname(__FILE__) + "/fixtures/document.pdf")
   DOC_DOCUMENT_FIXTURE = File.expand_path(File.dirname(__FILE__) + "/fixtures/document.doc")
   TXT_DOCUMENT_FIXTURE  = File.expand_path(File.dirname(__FILE__) + "/fixtures/document.txt")
+  DOCX_DOCUMENT_FIXTURE = File.expand_path(File.dirname(__FILE__) + "/fixtures/document.docx")
 
   it 'should require a filename to create' do
     expect { Textractor::Document.new }.to raise_error(ArgumentError)
@@ -22,7 +23,7 @@ describe Textractor::Document do
 
     end
 
-    describe "with word document" do
+    describe "with doc document" do
 
       it 'should extract the text from the document' do
         @doc = Textractor::Document.new(DOC_DOCUMENT_FIXTURE)
@@ -39,6 +40,15 @@ describe Textractor::Document do
       end
 
     end
+    
+    describe "with docx document" do
+      
+      it 'should extract the text from the document' do
+        @doc = Textractor::Document.new(DOCX_DOCUMENT_FIXTURE)
+        @doc.text.should == "Ruby on rails developer"
+      end
+
+    end
 
   end
 
@@ -50,9 +60,14 @@ describe Textractor::Document do
         @doc.type.should == :pdf
       end
 
-      it 'should return :word for Word documents' do
+      it 'should return :doc for Word documents' do
         @doc = Textractor::Document.new(DOC_DOCUMENT_FIXTURE)
         @doc.type.should == :doc
+      end
+      
+      it 'should return :docx for Word documents' do
+        @doc = Textractor::Document.new(DOCX_DOCUMENT_FIXTURE)
+        @doc.type.should == :docx
       end
 
       it 'should return nil for unknown documents' do
@@ -64,7 +79,7 @@ describe Textractor::Document do
     describe "with a content type provided" do
 
       it 'should ignore the extension of the file' do
-        [PDF_DOCUMENT_FIXTURE, DOC_DOCUMENT_FIXTURE].each do |filename|
+        [PDF_DOCUMENT_FIXTURE, DOC_DOCUMENT_FIXTURE, DOCX_DOCUMENT_FIXTURE].each do |filename|
           Textractor::Document::CONTENT_TYPE_CONVERSIONS.each do |content_type, type|
             @doc = Textractor::Document.new(filename, :content_type => content_type)
             @doc.type.should == type
