@@ -5,8 +5,8 @@ module Textractor
     CONTENT_TYPE_CONVERSIONS = {
       'application/pdf'   => :pdf,
       'application/x-pdf' => :pdf,
-      'application/doc'   => :word,
-      'application/x-doc' => :word,
+      'application/doc'   => :doc,
+      'application/x-doc' => :doc,
       'text/plain'        => :txt
     }
 
@@ -27,7 +27,7 @@ module Textractor
       when /pdf/
         :pdf
       when /doc/
-        :word
+        :doc
       when /txt/
         :txt
       else
@@ -45,7 +45,7 @@ module Textractor
       `pdftotext #{filename} - 2>/dev/null`.strip
     end
 
-    def extract_from_word
+    def extract_from_doc
       `wvWare -c utf-8 --nographics -x #{Textractor.wvText_path} #{filename} 2>/dev/null`.strip
     end
 

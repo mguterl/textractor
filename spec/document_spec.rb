@@ -3,7 +3,7 @@ require 'spec/spec_helper'
 describe Textractor::Document do
 
   PDF_DOCUMENT_FIXTURE  = File.expand_path(File.dirname(__FILE__) + "/fixtures/document.pdf")
-  WORD_DOCUMENT_FIXTURE = File.expand_path(File.dirname(__FILE__) + "/fixtures/document.doc")
+  DOC_DOCUMENT_FIXTURE = File.expand_path(File.dirname(__FILE__) + "/fixtures/document.doc")
   TXT_DOCUMENT_FIXTURE  = File.expand_path(File.dirname(__FILE__) + "/fixtures/document.txt")
 
   it 'should require a filename to create' do
@@ -25,7 +25,7 @@ describe Textractor::Document do
     describe "with word document" do
 
       it 'should extract the text from the document' do
-        @doc = Textractor::Document.new(WORD_DOCUMENT_FIXTURE)
+        @doc = Textractor::Document.new(DOC_DOCUMENT_FIXTURE)
         @doc.text.should == "Ruby on rails developer"
       end
 
@@ -51,8 +51,8 @@ describe Textractor::Document do
       end
 
       it 'should return :word for Word documents' do
-        @doc = Textractor::Document.new(WORD_DOCUMENT_FIXTURE)
-        @doc.type.should == :word
+        @doc = Textractor::Document.new(DOC_DOCUMENT_FIXTURE)
+        @doc.type.should == :doc
       end
 
       it 'should return nil for unknown documents' do
@@ -64,7 +64,7 @@ describe Textractor::Document do
     describe "with a content type provided" do
 
       it 'should ignore the extension of the file' do
-        [PDF_DOCUMENT_FIXTURE, WORD_DOCUMENT_FIXTURE].each do |filename|
+        [PDF_DOCUMENT_FIXTURE, DOC_DOCUMENT_FIXTURE].each do |filename|
           Textractor::Document::CONTENT_TYPE_CONVERSIONS.each do |content_type, type|
             @doc = Textractor::Document.new(filename, :content_type => content_type)
             @doc.type.should == type
