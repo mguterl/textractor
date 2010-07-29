@@ -41,6 +41,11 @@ document, you can provide it and Textractor won't guess.
 
     Textractor.text_from_file(path_to_document, :content_type => "application/doc")
 
+## TODO
+
+* Remove vendored docx2txt perl script
+* Replace as much as possible with pure ruby
+
 ## Note on Patches/Pull Requests
 
 * Fork the project.
