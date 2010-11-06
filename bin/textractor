@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'textractor'
+
+puts Textractor.text_from_path(File.expand_path(ARGV[0]))
