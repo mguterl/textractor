@@ -47,4 +47,12 @@ describe Textractor do
     }.to raise_error(Textractor::ContentTypeNotRegistered)
   end
 
+  it 'allows content type extractors to be removed' do
+    Textractor.remove_content_type("application/pdf")
+
+    expect {
+      Textractor.text_from_path(fixture_path('document.pdf'))
+    }.to raise_error(Textractor::ContentTypeNotRegistered)
+  end
+
 end

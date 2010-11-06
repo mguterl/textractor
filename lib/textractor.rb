@@ -36,6 +36,10 @@ module Textractor
     extractors[content_type] = extractor
   end
 
+  def self.remove_content_type(content_type)
+    extractors.delete content_type
+  end
+
   def self.extractor_for_content_type(content_type)
     extractors[content_type] or raise ContentTypeNotRegistered, "#{content_type} is not registered with Textractor"
   end
