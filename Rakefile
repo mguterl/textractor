@@ -1,22 +1,5 @@
-require 'rubygems'
-require 'rake'
-
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "textractor"
-    gem.summary = %Q{simple wrapper around CLI tools for extracting text from PDF and Word documents}
-    gem.description = %Q{simple wrapper around CLI for extracting text from PDF and Word documents}
-    gem.email = "mguterl@gmail.com"
-    gem.homepage = "http://github.com/mguterl/textractor"
-    gem.authors = ["Michael Guterl"]
-    gem.add_development_dependency "rspec", ">= 1.3.0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
-end
+require 'bundler'
+Bundler::GemHelper.install_tasks
 
 require 'spec/rake/spectask'
 Spec::Rake::SpecTask.new(:spec) do |spec|
@@ -29,8 +12,6 @@ Spec::Rake::SpecTask.new(:rcov) do |spec|
   spec.pattern = 'spec/**/*_spec.rb'
   spec.rcov = true
 end
-
-task :spec => :check_dependencies
 
 task :default => :spec
 
