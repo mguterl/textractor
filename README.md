@@ -28,18 +28,13 @@ this may not work on all systems due to dependency issues.
 Due to textractor's reliance on command line tools all the methods in
 textractor work on paths not File objects.
 
-    document = Textractor::Document.new(path_to_document)
-    document.text # => "Ruby on rails developer"
-
-There is also a convenience method on Textractor.
-
-    Textractor.text_from_file(path_to_document) # => "Ruby on rails developer"
+    Textractor.text_from_path(path_to_document) # => "Ruby on rails developer"
 
 Textractor will attempt to guess what type of document you're trying
 to extract text from.  However, if you know the content type of your
 document, you can provide it and Textractor won't guess.
 
-    Textractor.text_from_file(path_to_document, :content_type => "application/doc")
+    Textractor.text_from_path(path_to_document, :content_type => "application/doc")
 
 ## TODO
 
