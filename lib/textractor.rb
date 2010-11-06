@@ -5,7 +5,7 @@ module Textractor
   ContentTypeAlreadyRegistered = Class.new(StandardError)
   ContentTypeNotRegistered     = Class.new(StandardError)
 
-  autoload :Extractors,                    'textractor/extractors'
+  autoload :Extractors, 'textractor/extractors'
 
   def self.text_from_path(path, options = {})
     raise FileNotFound unless File.exists?(path)
