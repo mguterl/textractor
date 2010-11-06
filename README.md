@@ -20,7 +20,7 @@ I recommend using also passing +no_x11 to the install command, but this may not 
 
     apt-get install wv xpdf-utils links
 
-### Optional mimetype-fu
+### mimetype-fu (optional)
 
     gem install mimetype-fu
 

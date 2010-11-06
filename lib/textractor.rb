@@ -8,7 +8,6 @@ module Textractor
   autoload :Extractors,                    'textractor/extractors'
   autoload :SimpleContentTypeDetector,     'textractor/simple_content_type_detector'
   autoload :MimetypeFuContentTypeDetector, 'textractor/mimetype_fu_content_type_detector'
-
   def self.text_from_path(path, options = {})
     raise FileNotFound unless File.exists?(path)
     content_type    = options.fetch(:content_type) { content_type_for_path(path) }
