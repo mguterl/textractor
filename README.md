@@ -20,6 +20,12 @@ I recommend using also passing +no_x11 to the install command, but this may not 
 
     apt-get install wv xpdf-utils links
 
+### Optional mimetype-fu
+
+    gem install mimetype-fu
+
+If you plan on using more than the default extractors it is a good idea to install mimetype-fu.  This will allow much more robust content type detection.
+
 ## Usage
 
 ### Basics

@@ -5,7 +5,9 @@ module Textractor
   ContentTypeAlreadyRegistered = Class.new(StandardError)
   ContentTypeNotRegistered     = Class.new(StandardError)
 
-  autoload :Extractors, "textractor/extractors"
+  autoload :Extractors,                    'textractor/extractors'
+  autoload :SimpleContentTypeDetector,     'textractor/simple_content_type_detector'
+  autoload :MimetypeFuContentTypeDetector, 'textractor/mimetype_fu_content_type_detector'
 
   def self.text_from_path(path, options = {})
     raise FileNotFound unless File.exists?(path)
@@ -16,19 +18,12 @@ module Textractor
     extractor.text_from_path(path)
   end
 
+  class << self
+    attr_accessor :content_type_detector
+  end
+
   def self.content_type_for_path(path)
-    case File.extname(path)
-    when /\.pdf$/
-      'application/pdf'
-    when /\.doc$/
-      'application/msword'
-    when /\.docx$/
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-    when /\.txt$/
-      'text/plain'
-    else
-      raise UnknownContentType, "unable to determine content type for #{path}"
-    end
+    content_type_detector.content_type_for_path(path) or raise UnknownContentType, "unable to determine content type for #{path}"
   end
 
   def self.register_content_type(content_type, extractor)
@@ -62,3 +57,5 @@ module Textractor
   register_basic_types
 
 end
+
+require 'textractor/content_type_detector'
