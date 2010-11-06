@@ -47,6 +47,16 @@ describe Textractor do
       }.to raise_error(Textractor::ContentTypeAlreadyRegistered)
     end
 
+    it 'takes a block for simple cases' do
+      File.stub(:exists?).and_return(true)
+      Textractor.stub(:content_type_for_path).and_return('test')
+      Textractor.register_content_type('test') do |path|
+        path
+      end
+
+      Textractor.text_from_path('document').should == 'document'
+    end
+
   end
 
   describe ".extractor_for_content_type" do

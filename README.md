@@ -57,6 +57,14 @@ It's possible to define additional extractors for additional content types.  An 
 
     Textractor.register_content_type("text/html", HTMLExtractor)
 
+It is also possible to use a block as a simple content type extractor:
+
+    Textractor.register_content_type("text/html") do |path|
+      data = File.read(path)
+      document = Nokogiri::HTML(data)
+      document.text
+    end
+
 You can also remove a content type extractor:
 
     Textractor.remove_content_type("text/html")

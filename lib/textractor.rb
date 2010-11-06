@@ -10,10 +10,13 @@ module Textractor
   def self.text_from_path(path, options = {})
     raise FileNotFound unless File.exists?(path)
     content_type    = options.fetch(:content_type) { content_type_for_path(path) }
-    extractor_class = extractor_for_content_type(content_type)
-    extractor       = extractor_class.new
+    extractor       = extractor_for_content_type(content_type)
 
-    extractor.text_from_path(path)
+    if extractor.is_a?(Proc)
+      extractor.call(path)
+    else
+      extractor.new.text_from_path(path)
+    end
   end
 
   class << self
@@ -24,9 +27,13 @@ module Textractor
     content_type_detector.content_type_for_path(path) or raise UnknownContentType, "unable to determine content type for #{path}"
   end
 
-  def self.register_content_type(content_type, extractor)
+  def self.register_content_type(content_type, extractor = nil, &block)
     raise ContentTypeAlreadyRegistered, "#{content_type} is already registered" if extractors[content_type]
-    extractors[content_type] = extractor
+    if extractor
+      extractors[content_type] = extractor
+    elsif block_given?
+      extractors[content_type] = block
+    end
   end
 
   def self.remove_content_type(content_type)
