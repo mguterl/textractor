@@ -1,6 +1,6 @@
-module Textractor
+module Textractor::ContentTypeDetector
 
-  class MimetypeFuContentTypeDetector
+  class MimetypeFu
 
     def self.content_type_for_path(path)
       File.mime_type?(path)

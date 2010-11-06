@@ -1,6 +1,6 @@
-module Textractor
+module Textractor::ContentTypeDetector
 
-  class SimpleContentTypeDetector
+  class Simple
 
     def self.content_type_for_path(path)
       case File.extname(path)
