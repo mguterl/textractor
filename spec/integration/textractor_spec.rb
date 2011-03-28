@@ -55,4 +55,20 @@ describe Textractor do
     }.to raise_error(Textractor::ContentTypeNotRegistered)
   end
 
+  it 'returns the contents of doc files with a space in the path' do
+    Textractor.text_from_path(fixture_path("document .doc")).should == 'text'
+  end
+
+  it 'returns the contents of docx files with a space in the path' do
+    Textractor.text_from_path(fixture_path("document .docx")).should == 'text'
+  end
+
+  it 'returns the contents of pdf files with a space in the path' do
+    Textractor.text_from_path(fixture_path("document .pdf")).should == 'text'
+  end
+
+  it 'returns the contents of txt files with a space in the path' do
+    Textractor.text_from_path(fixture_path("document .txt")).should == 'text'
+  end
+
 end

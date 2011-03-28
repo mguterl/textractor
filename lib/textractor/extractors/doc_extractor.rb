@@ -13,7 +13,7 @@ module Textractor::Extractors
     end
 
     def text_from_path(path)
-      command = "wvWare -c utf-8 --nographics -x #{wvText_path} #{path}"
+      command = "wvWare -c utf-8 --nographics -x #{wvText_path} '#{path}'"
       puts command if $DEBUG
       `#{command}`.strip
     end
