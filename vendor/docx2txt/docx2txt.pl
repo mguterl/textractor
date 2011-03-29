@@ -228,6 +228,8 @@ if ($ENV{OS} =~ /^Windows/) {
 if ($inpIsDir eq 'y') {
     readFileInto("$ARGV[0]/word/document.xml", $content);
 } else {
+    # Special fix for single quotes, they get un-escaped earlier
+    $ARGV[0] =~ s/\'/\'\\\'\'/g;
     $content = `"$unzip" -p '$ARGV[0]' word/document.xml 2>$nulldevice`;
 }
 
