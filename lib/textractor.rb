@@ -64,3 +64,4 @@ module Textractor
 end
 
 require 'textractor/content_type_detector'
+require 'escape'
