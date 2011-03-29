@@ -228,7 +228,7 @@ if ($ENV{OS} =~ /^Windows/) {
 if ($inpIsDir eq 'y') {
     readFileInto("$ARGV[0]/word/document.xml", $content);
 } else {
-    $content = `"$unzip" -p "$ARGV[0]" word/document.xml 2>$nulldevice`;
+    $content = `"$unzip" -p '$ARGV[0]' word/document.xml 2>$nulldevice`;
 }
 
 die "Failed to extract required information from <$ARGV[0]>!\n" if ! $content;
@@ -260,7 +260,7 @@ binmode $txtfile;    # Ensure no auto-conversion of '\n' to '\r\n' on Windows.
 if ($inpIsDir eq 'y') {
     readFileInto("$ARGV[0]/word/_rels/document.xml.rels", $_);
 } else {
-    $_ = `"$unzip" -p "$ARGV[0]" word/_rels/document.xml.rels 2>$nulldevice`;
+    $_ = `"$unzip" -p '$ARGV[0]' word/_rels/document.xml.rels 2>$nulldevice`;
 }
 
 my %docurels;
