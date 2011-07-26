@@ -3,7 +3,7 @@ module Textractor::ContentTypeDetector
   class Simple
 
     def self.content_type_for_path(path)
-      case File.extname(path)
+      case File.extname(path.downcase)
       when /\.pdf$/
         'application/pdf'
       when /\.doc$/
