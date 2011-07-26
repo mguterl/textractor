@@ -71,4 +71,19 @@ describe Textractor do
     Textractor.text_from_path(fixture_path("document .txt")).should == 'text'
   end
 
+  it 'returns the contents of a doc file with a crazy path' do
+    Textractor.text_from_path(fixture_path("do\"cu'm\\en t.doc")).should == 'text'
+  end
+
+  it 'returns the contents of a docx file with a crazy path' do
+    Textractor.text_from_path(fixture_path("do\"cu'm\\en t.docx")).should == 'text'
+  end
+
+  it 'returns the contents of a pdf file with a crazy path' do
+    Textractor.text_from_path(fixture_path("do\"cu'm\\en t.pdf")).should == 'text'
+  end
+
+  it 'returns the contents of a txt file with a crazy path' do
+    Textractor.text_from_path(fixture_path("do\"cu'm\\en t.txt")).should == 'text'
+  end
 end
