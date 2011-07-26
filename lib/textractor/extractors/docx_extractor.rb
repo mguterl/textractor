@@ -14,7 +14,7 @@ module Textractor::Extractors
 
 
     def text_from_path(path)
-      `#{docx2txt_path} '#{path}' -`.strip
+      `#{docx2txt_path} #{Escape.shell_single_word(path)} -`.strip
     end
 
     private
