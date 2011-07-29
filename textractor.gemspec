@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "escape", ">=0.0.4"
 
-  s.files        = `git ls-files`.split("\n")
+  s.files        = `git ls-files`.split("\n").reject{|f| f.gsub(/"/, "") =~ /^spec/}
   s.executables  = `git ls-files`.split("\n").map{|f| f =~ /^bin\/(.*)/ ? $1 : nil}.compact
   s.require_path = 'lib'
   s.extra_rdoc_files = ["LICENSE", "README.md"]
