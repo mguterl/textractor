@@ -12,13 +12,7 @@ In order to use textractor you have to install a few command line tools.
 
 #### Homebrew
 
-    brew install xpdf links
-
-Download wv-1.2.4 and install from source: http://sourceforge.net/projects/wvware/files/wv/1.2.4/wv-1.2.4.tar.gz/download
-
-    ./configure
-    make
-    make install
+    brew install xpdf links wv
 
 #### MacPorts
 
