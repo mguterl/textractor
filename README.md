@@ -26,6 +26,10 @@ I recommend using also passing +no_x11 to the install command, but this may not 
 
     apt-get install wv xpdf-utils links
 
+### Ubuntu 12.04
+
+    apt-get install wv xpdf-utils links unzip
+
 ### Perl (*sigh*)
 
 Yes, this is slightly ridiculous, but a working perl installation is required in order to extract text from a docx file.
